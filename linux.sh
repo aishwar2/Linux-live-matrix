@@ -12,7 +12,7 @@ mysql_db="linux_db"
 mysql_table="metrics"
 
 # Initialize the data file
-data_file="/home/data.csv" #set the location of the csv file 
+data_file="/home/data.csv" #set the location of the csv file
 echo "Server,CPU,RAM,Network,Date,Time" > $data_file
 
 while true; do
