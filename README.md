@@ -1,3 +1,8 @@
+![Screenshot 2024-11-04 125047](https://github.com/user-attachments/assets/4d82615c-0d8d-4a7d-b6f4-db21fd406f77)
+
+![{6506228C-D6E3-4265-BB97-BBBE57570080}](https://github.com/user-attachments/assets/0c0abad5-de55-41e3-934b-d842e1c8f410)
+
+
 # Linux-live-matrix
 live web monitoring 0f 8 live Linux server 
 Bash Script Overview
