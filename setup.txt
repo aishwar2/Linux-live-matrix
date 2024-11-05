@@ -1,0 +1,91 @@
+Detailed Setup Instructions
+1. Clone the Repository
+First, clone your repository from GitHub to your local machine:
+```sh
+git clone https://github.com/username/repository.git
+Replace username and repository with your actual GitHub username and repository name.
+```
+2. Navigate to the Project Directory
+Change your current directory to the project directory:
+cd repository
+3. Database Setup
+You need to set up your MySQL database and import the schema.
+
+Start MySQL: Make sure your MySQL server is running. You can start it with:
+
+```sh
+sudo service mysql start
+Create the Database: Log into MySQL and create the database:
+```
+```sh
+mysql -u root -p
+Enter your MySQL root password when prompted. Then, in the MySQL prompt, create your database:
+```
+```sql
+CREATE DATABASE linux_db;
+EXIT;
+Import the Schema: Import the schema file into your new database:
+```
+```sh
+mysql -u root -p linux_db < schema.sql
+4. Configure Your PHP File
+Update the get_metrics.php file with your database credentials:
+```
+``` php
+$servername = "localhost";
+$username = "root";
+$password = "yourpassword";
+$dbname = "linux_db";
+Ensure get_metrics.php is set up to fetch and serve your metrics data correctly.
+```
+5. Configure Web Server (Apache/Nginx)
+Make sure your web server is properly configured to serve your HTML dashboard. If you’re using Apache:
+### Install Apache:
+
+```sh
+sudo apt-get install apache2
+Copy Project Files: Copy your project files to the web server root directory:
+```
+``` sh
+sudo cp -r /path/to/your/project/* /var/www/html/
+Restart Apache:
+```
+```sh
+sudo service apache2 restart
+If you’re using Nginx, the steps are similar but involve configuring your nginx.conf file.
+```
+6. Running the Data Collection Script
+Make sure your data collection script (collect_metrics.sh) is running and collecting data:
+Make the Script Executable:
+``` sh
+chmod +x collect_metrics.sh
+Run the Script:
+```
+``` sh
+./collect_metrics.sh
+This script will SSH into your servers, collect metrics, and store the data in your MySQL database and a CSV file.
+```
+Optional: Automation with Systemd
+If you want the data collection script to run automatically, you can create a systemd service:
+Create a Service File:
+```sh
+sudo nano /etc/systemd/system/collect_metrics.service
+Add the Following Content:
+```
+ini
+[Unit]
+Description=Collect Server Metrics
+
+[Service]
+ExecStart=/path/to/collect_metrics.sh
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
+Enable and Start the Service:
+
+```sh
+sudo systemctl enable collect_metrics.service
+sudo systemctl start
+```
