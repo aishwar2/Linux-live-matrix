@@ -147,7 +147,7 @@ logs/
 Include the database schema if your project uses a database.
 
 Example:
-
+``` sql
 sql
 CREATE DATABASE linux_db;
 
@@ -162,6 +162,7 @@ CREATE TABLE metrics (
     date DATE NOT NULL,
     time TIME NOT NULL
 );
+``` 
 Summary
 Include these documents in the root directory of your project repository. Here’s the basic structure:
 
